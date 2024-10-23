@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "RobotoFlex";
+  src: url("./roboto.ttf");
+}
+
+:root{
+  --primary: #ff6161;
+}
+
+#root, html, body{
+  
+  height: 100%;
+  width: 100%;
+}
+::-webkit-scrollbar{
+  width: 0;
+}
