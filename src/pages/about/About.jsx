@@ -40,7 +40,7 @@ const About = () => {
         initial={{ scale: 0.9, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ duration: 0.5, ease: easings.primary, delay: 1 }}
-        className="border-2 border-black absolute h-[25vw] overflow-hidden  rounded-full top-0 right-0 m-4"
+        className="border-2 border-black absolute h-[25vw] overflow-hidden  rounded-lg top-0 right-0 m-4"
       >
         <video
           loop

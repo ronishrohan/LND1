@@ -14,11 +14,10 @@ const Root = () => {
   const [scrollDirection, setScrollDirection] = useState(0);
   useEffect(() => {
     if (loaded === true) {
-      console.log("this has loaded");
-      console.log(scrollDiv.current);
+      
       const lenis = new Lenis({
-        
-        lerp: 0.06,
+        duration: 3,
+        lerp: 0.01,
         infinite: false,
       });
       function raf(time) {
@@ -33,9 +32,7 @@ const Root = () => {
     }
   }, [loaded]);
 
-  useEffect(() => {
-    console.log(scrollDirection);
-  }, [scrollDirection]);
+
 
   return (
     <>
@@ -43,7 +40,7 @@ const Root = () => {
       {loaded && (
         <div
           ref={scrollDiv}
-          className="font-roboto h-vh overflow-y-auto overflow-x-hidden pt-[70px] flex flex-col [font-variation-settings:'wdth'_30,'grad'_200]"
+          className="font-roboto h-vh pt-[70px] flex flex-col [font-variation-settings:'wdth'_30,'grad'_200]"
         >
           <Navbar hide={scrollDirection == 1}></Navbar>
           {/* <div className="h-[500vh]" >
@@ -54,6 +51,7 @@ const Root = () => {
           <Work></Work>
         </div>
       )}
+      
     </>
   );
 };

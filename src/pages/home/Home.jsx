@@ -37,7 +37,7 @@ const Home = () => {
     >
       <div className="absolute top-0 right-0 m-4 text-xl font-bold" >23:38:02 IST, BENGALURU</div>
       <div className="h-[calc(100vh-100px)] flex gap-4">
-        <div className="w-2/3 flex flex-col grow-0 shrink-0 overflow-hidden">
+        <div className=" flex flex-col grow  overflow-hidden">
           <TextAppear delay={0} duration={1} leading={100}>
             WELCOME TO KALA®
           </TextAppear>
@@ -60,7 +60,7 @@ const Home = () => {
             ></video>
           </motion.div>
         </div>
-        <div className="flex-col flex justify-end size-full">
+        <div className="flex-col w-[30vw] shrink-0 flex justify-end size-full">
           <div className="flex justify-end flex-col h-96 mb-[15%]">
             {/* <motion.div
               initial={{ x: "20%", scaleX: 0.86, scaleY: 0.5 }}
