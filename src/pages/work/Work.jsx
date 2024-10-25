@@ -105,7 +105,7 @@ const MiniCarousel = ({ hovered, currentIndex }) => {
         duration: 0.2,
         ease: "circOut"
       } }}
-      className="fixed top-0 left-0 border-4 border-black w-[320px] h-[180px] overflow-hidden pointer-events-none z-50  rounded-lg flex flex-col items-center justify-start"
+      className="fixed top-0 left-0 border-4 border-black w-[320px] h-[180px] overflow-hidden pointer-events-none z-40  rounded-lg flex flex-col items-center justify-start"
     >
       <motion.div initial={{y: 0}} animate={{y: `${-180 * currentIndex}px`}} transition={{duration: 0.3, ease:easings.primary}} className="flex flex-col ">
         {projects.map((project, index) => {
