@@ -4,7 +4,7 @@
 
 @font-face {
   font-family: "RobotoFlex";
-  src: url("./roboto.ttf");
+  src: url("/roboto.ttf");
 }
 
 :root{
