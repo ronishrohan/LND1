@@ -47,7 +47,7 @@ const Preloader = ({ thisHasLoaded }) => {
         delay: 1.2,
         ease: [0.76, 0, 0.24, 1],
       }}
-      className="bg-black overflow-hidden fixed w-full z-50 flex items-center justify-center text-white font-roboto"
+      className="bg-black overflow-hidden fixed w-full z-50 flex items-center justify-center text-white font-hauora"
     >
       <div className="absolute size-full  flex items-center justify-center ">
         <svg height="100%" width="100%">
@@ -59,7 +59,7 @@ const Preloader = ({ thisHasLoaded }) => {
             r="50%"
             rotate={-90}
             
-            stroke="white"
+            stroke="rgba(255,255,255,0.5)"
             
             fill="none"
           ></motion.circle>
@@ -74,7 +74,7 @@ const Preloader = ({ thisHasLoaded }) => {
             : "polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%)",
         }}
         transition={{ delay: 0.2, duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
-        className="absolute text-5xl font-bold"
+        className="absolute text-2xl font-bold"
       >
         {loaded}%
       </motion.div>
@@ -99,7 +99,7 @@ const Preloader = ({ thisHasLoaded }) => {
         }}
         className="text-5xl font-bold"
       >
-        KALA
+        Kala
       </motion.div>
     </motion.div>
   );

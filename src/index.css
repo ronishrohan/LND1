@@ -7,11 +7,18 @@
   src: url("/roboto.ttf");
 }
 
+@font-face {
+  font-family: "Hauora Sans";
+  src: url("/hauora.ttf");
+}
+
 :root{
-  --primary: #ff6161;
+  --primary: #52bb44;
+  --background: 206, 205, 202 ;
 }
 
 #root, html, body{
+  background-color: rgb(206, 205, 202);
   height: 100%;
   width: 100%;
 }

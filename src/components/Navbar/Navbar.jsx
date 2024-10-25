@@ -15,17 +15,19 @@ const Navbar = ({ hide }) => {
             animate={{ y: "0%" }}
             exit={{ y: "-100%" }}
             transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
-            className="h-fit px-4 w-full flex items-center font-bold text-2xl fixed  top-0 z-20 border-b border-black backdrop-blur-md bg-white/85"
+            className="h-fit px-4 w-full flex items-center font-bold text-2xl fixed  top-0 z-20 border-b border-black backdrop-blur-md bg-background/65"
           >
             <div
               style={{ fontVariationSettings: '"wdth" 25' }}
               className="my-4"
             >
-              <TextAppear delay={0.4} duration={0.8} >KALA</TextAppear>
+              <TextAppear delay={0.4} duration={0.8}>
+                KALA
+              </TextAppear>
             </div>
-            <div className="ml-auto flex gap-2 text-sm font-medium h-full py-3">
+            <div className="ml-auto flex gap-2 text-sm items-center font-medium h-full py-3">
               <div className="">
-                <Button >STUDIO</Button>
+                <Button>STUDIO</Button>
               </div>
               <div className="">
                 <Button>PROJECTS</Button>
@@ -33,17 +35,17 @@ const Navbar = ({ hide }) => {
               <div className="">
                 <Button>SERVICES</Button>
               </div>
+
               <div className="">
-                <Button>ABOUT US</Button>
-              </div>
-              <div className="">
-                <Button className={"border border-transparent hover:border-black/20"} onHover={<div>{"->"}</div>}>
+                <Button
+                  className={"border border-transparent hover:border-black/20"}
+                  onHover={<div>{"->"}</div>}
+                >
                   CONTACT
-                  
                 </Button>
               </div>
-              <div>
-                <Button><PushPinOutlined></PushPinOutlined></Button>
+              <div className="h-full rotate-45 aspect-square flex items-center justify-center">
+                <PushPinOutlined></PushPinOutlined>
               </div>
             </div>
           </motion.div>

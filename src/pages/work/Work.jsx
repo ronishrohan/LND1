@@ -44,12 +44,12 @@ const Work = () => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div ref={pageRef} className="w-full h-[200vh] relative ">
+    <div ref={pageRef} className="w-full relative  ">
       <MiniCarousel currentIndex={current} hovered={isHovered}></MiniCarousel>
-      <div className="flex flex-col h-[100vh] w-full p-4 sticky top-0">
+      <div className="flex flex-col h-[100vh] w-full p-4 ">
         {" "}
-        <div className=" whitespace-nowrap text-9xl font-roboto font-medium">
-          <TextUnblur>SOME OF OUR WORKS</TextUnblur>
+        <div className=" whitespace-nowrap text-7xl font-hauora font-medium">
+          <div>Some of our works</div>
         </div>
         <ProjectList setHovered={setIsHovered}>
           {projects.map((project, index) => {
@@ -69,24 +69,21 @@ const Work = () => {
 
 const MiniCarousel = ({ hovered, currentIndex }) => {
   const [mouse, setMouse] = useState([0, 0]);
-  const [rot, setRot] = useState(0)
+  const [rot, setRot] = useState(0);
+  const [dim, setDim] = useState([0, 0]);
+  const carouselRef = useRef();
 
   useEffect(() => {
     let lastPos = [0, 0];
     function onMouseMove(e) {
-      console.log(mouse, [e.clientX, e.clientY]);
+      setMouse((prev) => {
+        const y = e.clientY - window.innerHeight * 1.5;
+        const x = e.clientX - window.innerWidth / 2;
 
-      
+        let angleRad = Math.atan2(y, x);
 
-      setMouse(prev => {
-        const y = e.clientY - window.innerHeight*1.5;
-      const x = e.clientX - window.innerWidth/2;
-
-      let angleRad = Math.atan2(y,x);
-        
-      console.log(angleRad);
-      setRot(angleRad * 180 / Math.PI)
-      return [e.clientX, e.clientY];
+        setRot((angleRad * 180) / Math.PI);
+        return [e.clientX - 240, e.clientY - 135];
       });
     }
 
@@ -97,24 +94,51 @@ const MiniCarousel = ({ hovered, currentIndex }) => {
   return (
     <motion.div
       initial={{ y: 0, x: 0 }}
-      animate={{ x: mouse[0] - 160, y: mouse[1] - 90, scale: hovered ? 1 : 0, rotate: (rot + 90)/5 }}
-      transition={{ duration: 0.3, ease: "circOut", rotate: {
-        duration: 2,
-        ease: "circOut"
-      }, scale: {
-        duration: 0.2,
-        ease: "circOut"
-      } }}
-      className="fixed top-0 left-0 border-4 border-black w-[320px] h-[180px] overflow-hidden pointer-events-none z-40  rounded-lg flex flex-col items-center justify-start"
+      animate={{ x: mouse[0], y: mouse[1] }}
+      transition={{ duration: 0.8, ease: "circOut" }}
+      className="z-30 flex items-center justify-center fixed top-0 left-0 w-[480px] h-[270px] pointer-events-none"
     >
-      <motion.div initial={{y: 0}} animate={{y: `${-180 * currentIndex}px`}} transition={{duration: 0.3, ease:easings.primary}} className="flex flex-col ">
-        {projects.map((project, index) => {
-          return (
-            <div className="w-[320px] h-[180px] overflow-hidden shrink-0">
-              <img src={project.image} alt="" />
-            </div>
-          );
-        })}
+      <motion.div
+        initial={{ y: 0, x: 0 }}
+        ref={carouselRef}
+        animate={{
+          width: hovered ? "480px" : "0px",
+          height: hovered ? "270px" : "0px",
+          rotate: (rot + 90) / 5,
+          opacity: hovered ? 1 : 0,
+          
+        }}
+        transition={{
+          duration: 0.4,
+          ease: "circOut",
+          rotate: {
+            duration: 2,
+            ease: "circOut",
+          },
+          scale: {
+            duration: 0.2,
+            ease: "circOut",
+          },
+          opacity: {
+            duration: 0.05
+          }
+        }}
+        className=" border-4 overflow-hidden border-black w-[480px] h-[270px]  pointer-events-none z-40  rounded-lg flex flex-col items-center justify-start"
+      >
+        <motion.div
+          initial={{ y: 0 }}
+          animate={{ y: `${-270 * currentIndex}px` }}
+          transition={{ duration: 0.3, ease: easings.primary }}
+          className="flex flex-col "
+        >
+          {projects.map((project, index) => {
+            return (
+              <div className="w-[480px] h-[270px] overflow-hidden shrink-0">
+                <img src={project.image} alt="" />
+              </div>
+            );
+          })}
+        </motion.div>
       </motion.div>
     </motion.div>
   );
@@ -143,9 +167,9 @@ const Project = ({ project, setProject }) => {
     <button
       onMouseEnter={handleHovered}
       onMouseLeave={() => setHovered(false)}
-      className="w-full h-full border-b-2 border-black flex  font-roboto font-semibold text-8xl relative"
+      className="w-full h-full border-b-2 border-black flex  font-hauora font-semibold text-8xl relative"
     >
-      <motion.div  className="p-2">{project.title}</motion.div>
+      <motion.div className="p-2">{project.title}</motion.div>
       <AnimatePresence>
         {hovered && (
           <motion.div

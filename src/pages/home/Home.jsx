@@ -37,13 +37,9 @@ const Home = () => {
     >
       <div className="absolute top-0 right-0 m-4 text-xl font-bold" >23:38:02 IST, BENGALURU</div>
       <div className="h-[calc(100vh-100px)] flex gap-4">
-        <div className=" flex flex-col grow  overflow-hidden">
-          <TextAppear delay={0} duration={1} leading={100}>
-            WELCOME TO KALA®
-          </TextAppear>
-          <TextAppear delay={0} duration={1} leading={100}>
-            WE ARE A INDEPENDENT STUDIO
-          </TextAppear>
+        <div className=" flex flex-col grow  overflow-hidden font-bold text-6xl">
+          <div>Welcome to Kala®</div>
+          <div>We are an independent studio</div>
 
           <motion.div
             initial={{ y: "20%", scaleX: 0.86, scaleY: 0.5 }}
@@ -61,7 +57,7 @@ const Home = () => {
           </motion.div>
         </div>
         <div className="flex-col w-[30vw] shrink-0 flex justify-end size-full">
-          <div className="flex justify-end flex-col h-96 mb-[15%]">
+          <div className="flex justify-end flex-col h-96">
             {/* <motion.div
               initial={{ x: "20%", scaleX: 0.86, scaleY: 0.5 }}
               animate={{ x: "0%", scaleX: 1, scaleY: 1 }}

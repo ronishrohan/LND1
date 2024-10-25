@@ -1,60 +1,69 @@
-import React, { useEffect, useRef } from "react";
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
-import TextUnblur from "../../components/Motion/TextUnblur";
-import { easings } from "../../util/easings";
+import {
+  useMotionValueEvent,
+  useScroll,
+  useTransform,
+  motion,
+  useSpring,
+} from "framer-motion";
+import React, { useRef } from "react";
 
 const About = () => {
-  const pageRef = useRef(null);
-  const { scrollYProgress, scrollXProgress } = useScroll({
-    layoutEffect: false,
-    target: pageRef,
-    offset: ["0 1", "1 1"],
+  const bodyRef = useRef();
+  const scroll = useScroll({ target: bodyRef, offset: ["0.2 1", "0.3 1"] });
+  const scroll2 = useScroll({ target: bodyRef, offset: ["0.1 1", "1 1"] });
+
+  useMotionValueEvent(scroll2.scrollYProgress, "change", (latest) => {
+    console.log(latest);
   });
 
-  const smoothedScroll = useSpring(scrollYProgress, { damping: 20 });
+  const padding = useSpring(
+    useTransform(scroll.scrollYProgress, [0, 1], [18, 0]),
+    { stiffness: 400, damping: 30 }
+  );
+  const borderRadius = useTransform(scroll.scrollYProgress, [0, 1], [12, 0]);
+  const smoothedTranslate = useSpring(scroll2.scrollYProgress, {
+    stiffness: 400,
+    damping: 30,
+  });
+  const translateX = useTransform(smoothedTranslate, [0, 1], ["100%", "-100%"]);
 
-  useEffect(() => {
-    console.log(scrollYProgress.current);
-    console.log(scrollXProgress.current);
-  }, [scrollYProgress.current, scrollXProgress.current]);
-
-  const heroY = useTransform(smoothedScroll, [0, 1], ["-20%", "-50%"]);
-  const heroX = useTransform(smoothedScroll, [0, 1], ["0%", "50%"]);
-  const heroWidth = useTransform(smoothedScroll, [0, 1], ["30vw", "80vw"]);
-  const heroRight = useTransform(smoothedScroll, [0, 1], ["0%", "50%"]);
-  const heroTop = useTransform(smoothedScroll, [0, 1], ["0%", "40%"]);
   return (
-    <motion.div
-      
-      ref={pageRef}
-      className="h-[100vh]  flex flex-col p-4 relative"
-    >
+    <div ref={bodyRef} className="size-full h-[400vh] flex flex-col">
       <motion.div
-        style={{
-          y: heroY,
-          width: heroWidth,
-          right: heroRight,
-          x: heroX,
-          top: heroTop,
-        }}
-        initial={{ scale: 0.9, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      transition={{ duration: 0.5, ease: easings.primary, delay: 1 }}
-        className="border-2 border-black absolute h-[25vw] overflow-hidden  rounded-lg top-0 right-0 m-4"
+        style={{ padding: padding }}
+        className="sticky top-0 w-[100vw] h-[100vh]  "
       >
-        <video
-          loop
-          autoPlay
-          muted
-          src="./test.mp4"
-          className="w-full object-cover"
-        ></video>
+        <motion.div
+          style={{ borderRadius: borderRadius }}
+          className="relative overflow-hidden size-full flex items-center justify-center"
+        >
+          <motion.div
+            style={{ translateX: translateX }}
+            className="text-[20vh]  font-black text-white absolute z-40 flex-nowrap flex justify-start items-start"
+          >
+            {"WE HELP BRANDS BUILD BEAUTIFUL WEBSITES"
+              .split("")
+              .map((letter, index) => (
+                <motion.div
+                  initial={{ opacity: 0, y: "0%" }}
+                  whileInView={{ opacity: 1, y: "0%" }}
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                  key={index}
+                >
+                  {letter == " " ? "\u00A0" : letter}
+                </motion.div>
+              ))}
+          </motion.div>
+          <video
+            src="./test.mp4"
+            loop
+            autoPlay
+            muted
+            className="scale-105 w-full object-cover brightness-50"
+          ></video>
+        </motion.div>
       </motion.div>
-      <div className='absolute bottom-0 font-roboto [font-variation-settings:"wdth"_25] text-6xl mb-16 mx-10 font-bold'>
-        <TextUnblur>We are a design studio based in India.</TextUnblur>
-        <TextUnblur>We help you bring your vision to life.</TextUnblur>
-      </div>
-    </motion.div>
+    </div>
   );
 };
 

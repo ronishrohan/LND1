@@ -7,10 +7,12 @@ export default {
     
     extend: {
       colors: {
-        primary: "var(--primary)"
+        primary: "var(--primary)",
+        background: "rgba(var(--background))"
       },
       fontFamily: {
-        "roboto" : ["RobotoFlex", "sans-serif"]
+        "roboto" : ["RobotoFlex", "sans-serif"],
+        "hauora" : ["Hauora Sans", "sans-serif"],
       }
     },
   },

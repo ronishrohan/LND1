@@ -6,6 +6,8 @@ import Preloader from "../components/Preloader/Preloader";
 import Lenis from "lenis";
 import About from "./about/About";
 import Work from "./work/Work";
+import Services from "./services/Services";
+import Footer from "./footer/Footer";
 
 
 const Root = () => {
@@ -40,8 +42,9 @@ const Root = () => {
       {loaded && (
         <div
           ref={scrollDiv}
-          className="font-roboto h-vh pt-[70px] flex flex-col [font-variation-settings:'wdth'_30,'grad'_200]"
+          className="font-hauora h-vh pt-[70px] flex flex-col [font-variation-settings:'wdth'_30,'grad'_200]"
         >
+          
           <Navbar hide={scrollDirection == 1}></Navbar>
           {/* <div className="h-[500vh]" >
             <div className="h-full "></div>
@@ -49,6 +52,8 @@ const Root = () => {
           <Home></Home>
           <About></About>
           <Work></Work>
+          <Services></Services>
+          <Footer></Footer>
         </div>
       )}
       
