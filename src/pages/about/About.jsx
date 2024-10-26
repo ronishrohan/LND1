@@ -35,7 +35,7 @@ const About = () => {
       >
         <motion.div
           style={{ borderRadius: borderRadius }}
-          className="relative overflow-hidden size-full flex items-center justify-center"
+          className="relative overflow-hidden size-full flex border-2 border-black items-center justify-center"
         >
           <motion.div
             style={{ translateX: translateX }}
