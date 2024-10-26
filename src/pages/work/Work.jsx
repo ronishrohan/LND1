@@ -105,19 +105,19 @@ const MiniCarousel = ({ hovered, currentIndex }) => {
           width: hovered ? "480px" : "0px",
           height: hovered ? "270px" : "0px",
           rotate: (rot + 90) / 5,
-          opacity: hovered ? 1 : 0,
+          scale: hovered ? 1 : 0,
           
         }}
         transition={{
           duration: 0.4,
-          ease: "circOut",
+          ease: "circInOut",
           rotate: {
             duration: 2,
             ease: "circOut",
           },
           scale: {
-            duration: 0.2,
-            ease: "circOut",
+            duration: 0.4,
+            ease: "circInOut",
           },
           opacity: {
             duration: 0.05

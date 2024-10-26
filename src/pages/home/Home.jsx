@@ -35,7 +35,9 @@ const Home = () => {
       transition={{ duration: 0.7, delay: 0, ease: [0.76, 0, 0.24, 1] }}
       className="relative p-4 font-bold flex flex-col  size-full h-fit shrink-0 "
     >
-      <div className="absolute top-0 right-0 m-4 text-xl font-bold" >23:38:02 IST, BENGALURU</div>
+      <div className="absolute top-0 right-0 m-4 text-xl font-bold">
+        23:38:02 IST, BENGALURU
+      </div>
       <div className="h-[calc(100vh-100px)] flex gap-4">
         <div className=" flex flex-col grow  overflow-hidden font-bold text-6xl">
           <div>Welcome to Kala®</div>
@@ -74,10 +76,10 @@ const Home = () => {
             </motion.div> */}
             <div className="flex flex-col mt-4 items-end shrink-0">
               <TextAppear delay={0.8} duration={1.2} leading={40}>
-                WE KNOW
+                We know
               </TextAppear>
               <TextAppear delay={0.8} duration={1.2} leading={40}>
-                WHAT WORKS
+                What works
               </TextAppear>
             </div>
             <div className="rounded-lg mt-4">
